@@ -3,6 +3,9 @@ import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 
+import "express";
+import "multer";
+
 const config = new ConfigService();
 
 async function bootstrap(): Promise<void> {
