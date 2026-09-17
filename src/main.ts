@@ -1,6 +1,7 @@
 import { BadRequestException, HttpStatus, ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
+import cookieParser from "cookie-parser";
 import { AppModule } from "./app.module";
 
 import "express";
@@ -10,6 +11,7 @@ const config = new ConfigService();
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -31,6 +33,8 @@ async function bootstrap(): Promise<void> {
       },
     }),
   );
+  app.use(cookieParser());
+
   await app.listen(config.get<number>("PORT") ?? 3000, "0.0.0.0");
 }
 bootstrap();

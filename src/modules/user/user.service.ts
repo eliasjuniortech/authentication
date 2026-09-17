@@ -24,7 +24,7 @@ export class UserService {
     const id = randomUUID();
     const hash = await bcrypt.hash(data.password, await bcrypt.genSalt());
 
-    const path = file ? await this.upload.uploadService(id, file) : null;
+    const path = file ? await this.upload.save(id, file) : null;
 
     const user = await this.prisma.user.create({
       data: {

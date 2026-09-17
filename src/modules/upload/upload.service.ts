@@ -10,7 +10,7 @@ export class UploadService {
     this.supabse = supabase;
   }
 
-  async uploadService(id: string, file: Express.Multer.File): Promise<string> {
+  async save(id: string, file: Express.Multer.File): Promise<string> {
     const client = this.supabse.getClient();
 
     const extesion = file.originalname.split(".")[1];

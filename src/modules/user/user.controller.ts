@@ -6,11 +6,15 @@ import { UserService } from "./user.service";
 
 @Controller("user")
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  private readonly user: UserService;
+
+  constructor(user: UserService) {
+    this.user = user;
+  }
 
   @Post()
   @UseInterceptors(FileInterceptor("file"))
-  async registerUser(@Body() createUserDto: CreateUserDto, @UploadedFile() file?: Express.Multer.File): Promise<ResponseUserDto> {
-    return await this.userService.registerUser(createUserDto, file);
+  async registerUser(@Body() data: CreateUserDto, @UploadedFile() file?: Express.Multer.File): Promise<ResponseUserDto> {
+    return await this.user.registerUser(data, file);
   }
 }
