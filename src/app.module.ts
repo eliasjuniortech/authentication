@@ -1,8 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { InfrastructureModule } from "./infrastructure/infrastructure.module";
 import { AuthModule } from "./modules/auth/auth.module";
-import { PrismaModule } from "./modules/prisma/prisma.module";
-import { RedisModule } from "./modules/redis/redis.module";
 import { UploadModule } from "./modules/upload/upload.module";
 import { UserModule } from "./modules/user/user.module";
 
@@ -11,11 +10,10 @@ import { UserModule } from "./modules/user/user.module";
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    PrismaModule,
     UserModule,
     UploadModule,
     AuthModule,
-    RedisModule,
+    InfrastructureModule,
   ],
 })
 export class AppModule {}

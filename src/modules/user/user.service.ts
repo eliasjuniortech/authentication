@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import * as bcrypt from "bcrypt";
 import { randomUUID } from "crypto";
 import { EmailAlreadyExistsException } from "../../shared/exception/email-already-exists.exception";
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from "../../infrastructure/prisma.service";
 import { UploadService } from "../upload/upload.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { ResponseUserDto } from "./dto/response-user.dto";

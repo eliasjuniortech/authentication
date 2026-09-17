@@ -2,10 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcrypt";
+import { PrismaService } from "../../infrastructure/prisma.service";
+import { RedisService } from "../../infrastructure/redis.service";
 import { TooManyRequestException } from "../../shared/exception/too-many-requests.exception";
 import { UnauthorizedException } from "../../shared/exception/unauthorized.exception";
-import { PrismaService } from "../prisma/prisma.service";
-import { RedisService } from "../redis/redis.service";
 import { LoginDto } from "./dto/login.dto";
 
 @Injectable()

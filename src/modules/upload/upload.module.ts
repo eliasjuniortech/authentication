@@ -1,9 +1,10 @@
 import { Module } from "@nestjs/common";
-import { SupabaseService } from "./supabase/supabase.service";
+import { InfrastructureModule } from "../../infrastructure/infrastructure.module";
 import { UploadService } from "./upload.service";
 
 @Module({
-  providers: [UploadService, SupabaseService],
+  imports: [InfrastructureModule],
+  providers: [UploadService],
   exports: [UploadService],
 })
 export class UploadModule {}
